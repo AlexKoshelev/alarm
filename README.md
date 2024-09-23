@@ -1,5 +1,5 @@
-# alarm
-
+   # alarm 
+   # Установка зависимостей
 1. npm i
    # Запуск JSON-server
 3. cd server
