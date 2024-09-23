@@ -1,8 +1,8 @@
 # alarm
 
 1. npm i
-   Запуск JSON-server
+   # Запуск JSON-server
 3. cd server
 4. npx json-server db.json
-   Запуск клиента
+   # Запуск клиента
 6. npm run dev
