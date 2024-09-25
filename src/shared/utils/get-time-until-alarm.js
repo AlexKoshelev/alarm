@@ -6,7 +6,6 @@ export function getTimeUntilAlarm(alarmData) {
     const currentDay = currentDate.getDay();
     const currentHour = currentDate.getHours();
     const currentMinute = currentDate.getMinutes();
-
     const alarmHour = parseInt(alarmData?.time.h, 10);
     const alarmMinute = parseInt(alarmData?.time.m, 10);
 

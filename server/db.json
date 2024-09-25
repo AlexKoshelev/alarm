@@ -3,20 +3,8 @@
     {
       "id": "1726419816687",
       "time": {
-        "m": "15",
-        "h": "21"
-      },
-      "selectedDays": [
-        7
-      ],
-      "selectedSound": 1,
-      "status": false
-    },
-    {
-      "id": "1726419827639",
-      "time": {
-        "m": "52",
-        "h": "15"
+        "m": "09",
+        "h": "22"
       },
       "selectedDays": [
         1,
@@ -24,22 +12,47 @@
         3,
         4,
         5,
-        7
-      ],
-      "selectedSound": 1,
-      "status": false
-    },
-    {
-      "id": "1726480060039",
-      "time": {
-        "m": "07",
-        "h": "23"
-      },
-      "selectedDays": [
+        6,
         7
       ],
       "selectedSound": 1,
       "status": true
+    },
+    {
+      "id": "1726419827639",
+      "time": {
+        "m": "59",
+        "h": "21"
+      },
+      "selectedDays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        6
+      ],
+      "selectedSound": 1,
+      "status": true
+    },
+    {
+      "id": "1726480060039",
+      "time": {
+        "m": "06",
+        "h": "22"
+      },
+      "selectedDays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "selectedSound": 1,
+      "status": false
     },
     {
       "id": "1727092976664",
@@ -52,7 +65,7 @@
         1
       ],
       "selectedSound": 4,
-      "status": true
+      "status": false
     }
   ]
 }

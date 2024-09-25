@@ -2,15 +2,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDayWeek } from "../utils/get-day-week";
 import { getNextDateForDayOfWeek } from "../utils/get-next-date-for-day-of-week";
 import { getTimeUntilAlarm } from "../utils/get-time-until-alarm";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { sortByNextTigger } from "../../app/store/alarms/actionCreators";
 import { TriggerModal } from "../components/trigger-modal";
+
+const useNearestAlarm = (alarms) => {
+  return useMemo(() => alarms[0] || null, [alarms]);
+};
 
 export const NearestAlarmClock = memo(() => {
   const dispatch = useDispatch();
   const { alarms } = useSelector((state) => state.alarms);
   const [isOpen, setIsOpen] = useState(false);
-  const nearestAlarm = alarms[0];
+
+  const nearestAlarm = useNearestAlarm(alarms);
 
   const [timeUntilAlarm, setTimeUntilAlarm] = useState(
     getTimeUntilAlarm(nearestAlarm)
