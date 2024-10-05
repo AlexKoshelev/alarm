@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getDayWeek } from "../utils/get-day-week";
-import { getNextDateForDayOfWeek } from "../utils/get-next-date-for-day-of-week";
-import { getTimeUntilAlarm } from "../utils/get-time-until-alarm";
 import { memo, useEffect, useMemo, useState } from "react";
-import { sortByNextTigger } from "../../app/store/alarms/actionCreators";
-import { TriggerModal } from "../components/trigger-modal";
+import { useDispatch, useSelector } from "react-redux";
+import { sortByNextTigger } from "../../../app/store/alarms/actionCreators";
+import { TriggerModal } from "../trigger-modal";
+import { getDayWeek } from "../../utils/get-day-week";
+import { getNextDateForDayOfWeek } from "../../utils/get-next-date-for-day-of-week";
+import { getTimeUntilAlarm } from "./get-time-until-alarm";
 
 const useNearestAlarm = (alarms) => {
   return useMemo(() => alarms[0] || null, [alarms]);
