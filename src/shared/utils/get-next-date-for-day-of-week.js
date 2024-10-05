@@ -1,4 +1,4 @@
-// возвращает даду срабатывания ближайшего будильника
+// возвращает дату срабатывания ближайшего будильника
 
 export function getNextDateForDayOfWeek(targetDay) {
   const now = new Date();

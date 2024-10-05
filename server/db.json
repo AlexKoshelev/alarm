@@ -52,7 +52,7 @@
         7
       ],
       "selectedSound": 1,
-      "status": false
+      "status": true
     },
     {
       "id": "1727092976664",
@@ -65,7 +65,7 @@
         1
       ],
       "selectedSound": 4,
-      "status": false
+      "status": true
     }
   ]
 }

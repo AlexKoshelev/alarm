@@ -10,12 +10,14 @@ import {
   sortByNextTigger,
 } from "./actionCreators";
 
+const BASE_URL = "http://localhost:3000";
+
 // получение всех будильников, сортировка по status
 export const fetchData = () => {
   return async (dispatch) => {
     dispatch(setLoading());
     try {
-      const response = await fetch("http://localhost:3000/alarms?_sort=status");
+      const response = await fetch(`${BASE_URL}/alarms?_sort=status`);
       const data = await response.json();
       dispatch(fetchAlarms(data));
       dispatch(sortByNextTigger());
@@ -30,7 +32,7 @@ export const addAlarm = (data) => {
   return async (dispatch) => {
     dispatch(setLoading());
     try {
-      const response = await fetch("http://localhost:3000/alarms", {
+      const response = await fetch(`${BASE_URL}/alarms`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +59,7 @@ export const toggleAlarmStatus = (data) => {
   return async (dispatch) => {
     dispatch(setLoading());
     try {
-      const response = await fetch(`http://localhost:3000/alarms/${data.id}`, {
+      const response = await fetch(`${BASE_URL}/alarms/${data.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -79,12 +81,12 @@ export const toggleAlarmStatus = (data) => {
 };
 
 // редактирование будильника, сортировка списка будильников
-export const editCurentAlarm = (data) => {
+export const editCurrentAlarm = (data) => {
   return async (dispatch) => {
     dispatch(setLoading());
     try {
       const response = await fetch(
-        `http://localhost:3000/alarms/${data.editedAlarm.id}`,
+        `${BASE_URL}/alarms/${data.editedAlarm.id}`,
         {
           method: "PUT",
           headers: {
@@ -109,11 +111,11 @@ export const editCurentAlarm = (data) => {
 };
 
 // редактирование будильника, сортировка списка будильников
-export const removeCurentAlarm = (data) => {
+export const removeCurrentAlarm = (data) => {
   return async (dispatch) => {
     dispatch(setLoading());
     try {
-      const response = await fetch(`http://localhost:3000/alarms/${data.id}`, {
+      const response = await fetch(`${BASE_URL}/alarms/${data.id}`, {
         method: "DELETE",
       });
       if (!response.ok) {

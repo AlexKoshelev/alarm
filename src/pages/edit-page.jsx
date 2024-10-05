@@ -3,7 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useEffect, useState } from "react";
 import { getCurrentAlarm } from "../app/store/alarms/actionCreators";
-import { editCurentAlarm, removeCurentAlarm } from "../app/store/alarms/thunk";
+import {
+  editCurrentAlarm,
+  removeCurrentAlarm,
+} from "../app/store/alarms/thunk";
 import { AlarmForm } from "../shared/components/alarm-form";
 
 export const EditPage = memo(() => {
@@ -35,7 +38,7 @@ export const EditPage = memo(() => {
   function handleSubmit() {
     if (currentAlarm !== undefined)
       dispatch(
-        editCurentAlarm({
+        editCurrentAlarm({
           editedAlarm: {
             ...currentAlarm,
             time,
@@ -48,7 +51,7 @@ export const EditPage = memo(() => {
   }
   function handleRemove() {
     if (id) {
-      dispatch(removeCurentAlarm({ id, nav: navigate }));
+      dispatch(removeCurrentAlarm({ id, nav: navigate }));
     }
   }
   return (
@@ -78,32 +81,3 @@ export const EditPage = memo(() => {
   );
 });
 EditPage.displayName = "EditPage";
-/* <Wrapper>
-      <section className="flex-wrap justify-center p-4">
-        <TimeSelector time={time} setTime={setTime} />
-        <MultiSelect
-          selectedDays={selectedDays}
-          setSelectedDays={setSelectedDays}
-        />
-        <CustomSelect
-          selectedSound={selectedSound}
-          setSelectedSound={setSelectedSound}
-        />
-        <div className="flex justify-around">
-          <CustomButton
-            textContent="Удалить"
-            hoverType="red"
-            handleClick={() => handleRemove()}
-          />
-          <CustomButton
-            textContent="Отмена"
-            hoverType="red"
-            handleClick={() => navigate("/")}
-          />
-          <CustomButton
-            textContent="Сохранить"
-            handleClick={() => handleSubmit()}
-          />
-        </div>
-      </section>
-    </Wrapper> */
