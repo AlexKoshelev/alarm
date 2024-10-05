@@ -5,9 +5,9 @@ import { Wrapper } from "../ui/wrapper";
 import { usePlaySound } from "../../hooks/usePlaySound";
 
 export const TriggerModal = ({ isOpen, data, toggleIsOpen }) => {
-  const { selectedDays, time, selectedSound } = data;
+  const { selectedDays, time, selectedSoundIndex } = data;
   const [isShow, setIsShow] = useState(false);
-  const { play, stop } = usePlaySound(selectedSound);
+  const { play, stop } = usePlaySound(selectedSoundIndex);
 
   useEffect(() => {
     if (isOpen) {
@@ -65,7 +65,7 @@ TriggerModal.propTypes = {
   toggleIsOpen: PropTypes.func.isRequired,
   data: PropTypes.shape({
     selectedDays: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    selectedSound: PropTypes.number.isRequired,
+    selectedSoundIndex: PropTypes.number.isRequired,
     time: PropTypes.shape({
       m: PropTypes.string.isRequired,
       h: PropTypes.string.isRequired,

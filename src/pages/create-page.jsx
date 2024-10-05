@@ -10,7 +10,7 @@ export const CreatePage = memo(() => {
   const dispatch = useDispatch();
   const [time, setTime] = useState({ m: "00", h: "07" });
   const [selectedDays, setSelectedDays] = useState([new Date().getDay() + 1]);
-  const [selectedSound, setSelectedSound] = useState(1);
+  const [selectedSoundIndex, setSelectedSoundIndex] = useState(0);
 
   function handleSubmit() {
     dispatch(
@@ -19,7 +19,7 @@ export const CreatePage = memo(() => {
           id: String(new Date().getTime()),
           time,
           selectedDays,
-          selectedSound,
+          selectedSoundIndex,
           status: true,
         },
         nav: navigate,
@@ -33,8 +33,8 @@ export const CreatePage = memo(() => {
       setTime={setTime}
       selectedDays={selectedDays}
       setSelectedDays={setSelectedDays}
-      selectedSound={selectedSound}
-      setSelectedSound={setSelectedSound}
+      selectedSoundIndex={selectedSoundIndex}
+      setSelectedSoundIndex={setSelectedSoundIndex}
     >
       <CustomButton
         textContent="Отмена"

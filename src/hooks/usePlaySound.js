@@ -7,6 +7,6 @@ import s4 from "../assets/4.mp3";
 
 export const usePlaySound = (val) => {
   const sounds = [s1, s2, s3, s4];
-  const [play, { stop }] = useSound(sounds[val - 1], { loop: true });
+  const [play, { stop }] = useSound(sounds[val], { loop: true });
   return { play, stop };
 };

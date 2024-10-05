@@ -26,13 +26,13 @@ export const EditPage = memo(() => {
   });
 
   const [selectedDays, setSelectedDays] = useState([]);
-  const [selectedSound, setSelectedSound] = useState(1);
+  const [selectedSoundIndex, setSelectedSoundIndex] = useState(0);
 
   useEffect(() => {
     if (currentAlarm === undefined) return;
     setTime({ m: currentAlarm.time.m, h: currentAlarm.time.h });
     setSelectedDays(currentAlarm.selectedDays);
-    setSelectedSound(currentAlarm.selectedSound);
+    setSelectedSoundIndex(currentAlarm.selectedSoundIndex);
   }, [id, currentAlarm]);
 
   function handleSubmit() {
@@ -43,7 +43,7 @@ export const EditPage = memo(() => {
             ...currentAlarm,
             time,
             selectedDays,
-            selectedSound,
+            selectedSoundIndex,
           },
           nav: navigate,
         })
@@ -60,8 +60,8 @@ export const EditPage = memo(() => {
       setTime={setTime}
       selectedDays={selectedDays}
       setSelectedDays={setSelectedDays}
-      selectedSound={selectedSound}
-      setSelectedSound={setSelectedSound}
+      selectedSoundIndex={selectedSoundIndex}
+      setSelectedSoundIndex={setSelectedSoundIndex}
     >
       <CustomButton
         textContent="Удалить"

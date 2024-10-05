@@ -34,7 +34,7 @@ ItemAlarm.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.number.isRequired,
     selectedDays: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
-    selectedSound: PropTypes.number.isRequired,
+    selectedSoundIndex: PropTypes.number.isRequired,
     status: PropTypes.bool.isRequired,
     time: PropTypes.shape({
       m: PropTypes.string.isRequired,

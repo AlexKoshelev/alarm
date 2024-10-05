@@ -50,7 +50,7 @@ export const alarmsReducer = (state = initialState, action) => {
     case a.SORT_ALARMS_BY_STATUS:
       return {
         ...state,
-        alarms: state.alarms.sort((a, b) => {
+        alarms: state.alarms.toSorted((a, b) => {
           if (a.status < b.status) return 1;
           if (a.status > b.status) return -1;
           return 0;

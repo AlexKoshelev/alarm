@@ -6,11 +6,11 @@ export const CustomButton = ({
   handleClick,
 }) => {
   function getHover() {
-    return hoverType === "red" ? "text-red-500" : "text-lime-400";
+    return hoverType === "red" ? "hover:text-red-500" : "hover:text-lime-400";
   }
   return (
     <button
-      className={`px-6 py-2 rounded hover:bg-gray-800 hover:${getHover()}`}
+      className={`px-6 py-2 rounded hover:bg-gray-800 ${getHover()}`}
       onClick={handleClick}
     >
       {textContent}

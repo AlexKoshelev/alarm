@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { memo } from "react";
 
-export const MultiSelect = memo(({ selectedDays, setSelectedDays }) => {
+export const WeekDaysSelect = memo(({ selectedDays, setSelectedDays }) => {
   const toggleDay = (day) => {
     setSelectedDays((prevSelectedDays) =>
       prevSelectedDays.includes(day)
@@ -40,8 +40,8 @@ export const MultiSelect = memo(({ selectedDays, setSelectedDays }) => {
   );
 });
 
-MultiSelect.displayName = "MultiSelect";
-MultiSelect.propTypes = {
+WeekDaysSelect.displayName = "WeekDaysSelect";
+WeekDaysSelect.propTypes = {
   selectedDays: PropTypes.array.isRequired,
   setSelectedDays: PropTypes.func.isRequired,
 };

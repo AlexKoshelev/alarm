@@ -15,7 +15,7 @@
         6,
         7
       ],
-      "selectedSound": 1,
+      "selectedSoundIndex": 0,
       "status": true
     },
     {
@@ -33,7 +33,7 @@
         7,
         6
       ],
-      "selectedSound": 1,
+      "selectedSoundIndex": 0,
       "status": true
     },
     {
@@ -51,7 +51,7 @@
         6,
         7
       ],
-      "selectedSound": 1,
+      "selectedSoundIndex": 0,
       "status": true
     },
     {
@@ -64,8 +64,8 @@
         2,
         1
       ],
-      "selectedSound": 4,
-      "status": true
+      "selectedSoundIndex": 3,
+      "status": false
     }
   ]
 }
