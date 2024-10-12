@@ -1,20 +1,25 @@
-import { useRoutes } from "react-router-dom";
-import { routes } from "../routes/routes";
 import { useEffect } from "react";
+import { useRoutes } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchData } from "./store/alarms/thunk";
+import { routes } from "./routes.jsx";
+import { fetchAlarms, useAlarmPlayingTrigger, AlarmTriggerModal } from "@/modules/alarm";
 
 export function App() {
-  const element = useRoutes(routes());
+  const element = useRoutes(routes);
   const dispatch = useDispatch();
 
+  useAlarmPlayingTrigger();
+
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchAlarms());
   }, [dispatch]);
 
   return (
-    <main className="bg-gray-900 min-h-screen flex justify-center text-gray-50">
-      {element}
-    </main>
+    <>
+      <main className="bg-gray-900 min-h-screen flex justify-center text-gray-50">
+        {element}
+      </main>
+      <AlarmTriggerModal />
+    </>
   );
 }

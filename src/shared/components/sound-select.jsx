@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { usePlaySound } from "../../hooks/usePlaySound";
 import { useEffect, useState } from "react";
-import { PlayIcon } from "../icons/play";
-import { PauseIcon } from "../icons/pause";
+import { PlayIcon } from "../../common/ui/icons/play";
+import { PauseIcon } from "../../common/ui/icons/pause";
 
 export const SoundSelect = ({ selectedSoundIndex, setSelectedSoundIndex }) => {
   const { play, stop } = usePlaySound(selectedSoundIndex);

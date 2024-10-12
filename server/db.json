@@ -2,70 +2,31 @@
   "alarms": [
     {
       "id": "1726419816687",
-      "time": {
-        "m": "09",
-        "h": "22"
-      },
-      "selectedDays": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "selectedSoundIndex": 0,
-      "status": true
+      "triggerTimeMinutes": 1329,
+      "daysOfWeek": [0, 1, 2, 3, 4, 5, 6],
+      "selectedSoundId": "0",
+      "enabled": true
     },
     {
       "id": "1726419827639",
-      "time": {
-        "m": "59",
-        "h": "21"
-      },
-      "selectedDays": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7,
-        6
-      ],
-      "selectedSoundIndex": 0,
-      "status": true
+      "triggerTimeMinutes": 1319,
+      "daysOfWeek": [2, 3],
+      "selectedSoundId": "0",
+      "enabled": true
     },
     {
       "id": "1726480060039",
-      "time": {
-        "m": "06",
-        "h": "22"
-      },
-      "selectedDays": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "selectedSoundIndex": 0,
-      "status": true
+      "triggerTimeMinutes": 1326,
+      "daysOfWeek": [0, 1, 2, 3, 4, 5, 6],
+      "selectedSoundId": "0",
+      "enabled": true
     },
     {
       "id": "1727092976664",
-      "time": {
-        "m": "03",
-        "h": "17"
-      },
-      "selectedDays": [
-        2,
-        1
-      ],
-      "selectedSoundIndex": 3,
-      "status": false
+      "triggerTimeMinutes": 1023,
+      "daysOfWeek": [2, 1],
+      "selectedSoundId": "3",
+      "enabled": false
     }
   ]
 }

@@ -1,19 +1,14 @@
-import { AddAlarmBtn } from "../shared/components/add-alarm-btn";
-import { ListOfAlarms } from "../shared/ui/list-of-alarms";
-import { NearestAlarmClock } from "../shared/components/nearest-alarm-clock/nearest-alarm-clock";
+import { AlarmList, NextAlarmCountdown, AddAlarmButton } from "@/modules/alarm";
 
-import { Wrapper } from "../shared/ui/wrapper";
-import { memo } from "react";
-
-export const MainPage = memo(() => {
+export const MainPage = () => {
   return (
-    <Wrapper>
+    <div className="ms w-96 mx-auto p-2 m-8">
       <section className="flex-col justify-center mb-4">
-        <NearestAlarmClock />
-        <AddAlarmBtn />
+        <NextAlarmCountdown />
+        <AddAlarmButton />
       </section>
-      <ListOfAlarms />
-    </Wrapper>
+
+      <AlarmList />
+    </div>
   );
-});
-MainPage.displayName = "MainPage";
+}

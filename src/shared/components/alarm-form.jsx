@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { Wrapper } from "../ui/wrapper";
 
 import { WeekDaysSelect } from "./week-days-select";
 import { TimeSelector } from "./time-selector";
@@ -16,20 +15,20 @@ export const AlarmForm = memo(
     setSelectedSoundIndex,
   }) => {
     return (
-      <Wrapper>
-        <section className="flex-wrap justify-center p-4">
-          <TimeSelector time={time} setTime={setTime} />
-          <WeekDaysSelect
-            selectedDays={selectedDays}
-            setSelectedDays={setSelectedDays}
-          />
-          <SoundSelect
-            selectedSoundIndex={selectedSoundIndex}
-            setSelectedSoundIndex={setSelectedSoundIndex}
-          />
-          <div className="flex justify-around">{children}</div>
-        </section>
-      </Wrapper>
+        <div className="ms w-96 mx-auto p-2 m-8">
+            <section className="flex-wrap justify-center p-4">
+                <TimeSelector time={time} setTime={setTime}/>
+                <WeekDaysSelect
+                    selectedDays={selectedDays}
+                    setSelectedDays={setSelectedDays}
+                />
+                <SoundSelect
+                    selectedSoundIndex={selectedSoundIndex}
+                    setSelectedSoundIndex={setSelectedSoundIndex}
+                />
+                <div className="flex justify-around">{children}</div>
+            </section>
+        </div>
     );
   }
 );

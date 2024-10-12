@@ -1,52 +1,38 @@
-import { CustomButton } from "../shared/components/custom-button";
-import { memo, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addAlarm } from "../app/store/alarms/thunk";
-import { AlarmForm } from "../shared/components/alarm-form";
+import { AlarmForm, addAlarm } from "@/modules/alarm";
+import { Button } from "@/common/ui/button";
 
-export const CreatePage = memo(() => {
+export const CreatePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [time, setTime] = useState({ m: "00", h: "07" });
-  const [selectedDays, setSelectedDays] = useState([new Date().getDay() + 1]);
-  const [selectedSoundIndex, setSelectedSoundIndex] = useState(0);
+  const [triggerTimeMinutes, setTriggerTimeMinutes] = useState(0);
+  const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState([new Date().getDay()]);
+  const [selectedSoundId, setSelectedSoundId] = useState(null);
 
   function handleSubmit() {
     dispatch(
       addAlarm({
         newAlarm: {
-          id: String(new Date().getTime()),
-          time,
-          selectedDays,
-          selectedSoundIndex,
-          status: true,
+          // данные
         },
-        nav: navigate,
-      })
+      }).then(() => navigate('/'))
     );
   }
 
   return (
     <AlarmForm
-      time={time}
-      setTime={setTime}
-      selectedDays={selectedDays}
-      setSelectedDays={setSelectedDays}
-      selectedSoundIndex={selectedSoundIndex}
-      setSelectedSoundIndex={setSelectedSoundIndex}
-    >
-      <CustomButton
-        textContent="Отмена"
-        hoverType="red"
-        handleClick={() => navigate("/")}
-      />
-      <CustomButton
-        textContent="Сохранить"
-        handleClick={() => handleSubmit()}
-      />
-    </AlarmForm>
+      bottomContent={
+        <>
+          <Button hoverType="danger" onClick={() => navigate("/")}>Отмена</Button>
+          <Button onCLick={handleSubmit}>Сохранить</Button>
+        </>
+      }
+      triggerTimeMinutes={triggerTimeMinutes}
+      selectedDaysOfWeek={selectedDaysOfWeek}
+      selectedSoundId={selectedSoundId}
+    />
   );
-});
+}
 
-CreatePage.displayName = "CreatePage";

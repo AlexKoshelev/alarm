@@ -1,5 +1,9 @@
 import PropTypes from "prop-types";
-import { createTimeArray } from "../utils/create-time-array";
+
+export const createTimeArray = (length) => {
+    return Array.from({ length }, (_, i) => i.toString().padStart(2, "0"));
+};
+
 
 export const TimeSelector = ({ time, setTime }) => {
   const hours = createTimeArray(24);

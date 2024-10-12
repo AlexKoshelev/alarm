@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import { getDayWeek } from "../utils/get-day-week";
+import { getDayOfWeekLabel } from "../../common/lib/date-time/get-day-of-week-label.js";
 import { useEffect, useState } from "react";
-import { Wrapper } from "../ui/wrapper";
 import { usePlaySound } from "../../hooks/usePlaySound";
 
 export const TriggerModal = ({ isOpen, data, toggleIsOpen }) => {
@@ -34,28 +33,29 @@ export const TriggerModal = ({ isOpen, data, toggleIsOpen }) => {
       } absolute w-auto h-full bg-gray-900 z-50`}
     >
       <button onClick={play}></button>
-      <Wrapper>
+      <div className="ms w-96 mx-auto p-2 m-8">
         <div className="flex-col text-center justify-center align-middle ">
           <div className="mb-2">
             <p>Сработал будильник</p>
             <p className="text-3xl">
-              {time.h}:{time.m}, {getDayWeek(selectedDays[0])}
+              {time.h}:{time.m}, {getDayOfWeekLabel(selectedDays[0])}
             </p>
           </div>
           <div className="mb-5">Отключить?</div>
           <div className="flex align-middle justify-center">
             <label className="inline-flex cursor-pointer">
               <input
-                type="checkbox"
-                className="sr-only peer"
-                checked={!isOpen}
-                onChange={handleToggle}
+                  type="checkbox"
+                  className="sr-only peer"
+                  checked={!isOpen}
+                  onChange={handleToggle}
               />
-              <div className="relative w-[8rem] h-[2rem] bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-lime-300 dark:peer-focus:ring-lime-500 dark:bg-gray-700 peer-checked:after:translate-x-[6rem] rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[0.25rem] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[1.75rem] after:w-[1.75rem] after:transition-all dark:border-gray-600 peer-checked:bg-lime-400"></div>
+              <div
+                  className="relative w-[8rem] h-[2rem] bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-lime-300 dark:peer-focus:ring-lime-500 dark:bg-gray-700 peer-checked:after:translate-x-[6rem] rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[0.25rem] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[1.75rem] after:w-[1.75rem] after:transition-all dark:border-gray-600 peer-checked:bg-lime-400"></div>
             </label>
           </div>
         </div>
-      </Wrapper>
+      </div>
     </div>
   );
 };

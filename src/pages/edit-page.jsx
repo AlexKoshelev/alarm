@@ -1,4 +1,4 @@
-import { CustomButton } from "../shared/components/custom-button";
+import { CustomButton } from "../common/ui/components/custom-button.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useEffect, useState } from "react";
