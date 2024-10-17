@@ -1,9 +1,12 @@
-import { CustomButton } from "../shared/components/custom-button";
+import { CustomButton } from "../common/ui/components/custom-button.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useEffect, useState } from "react";
 import { getCurrentAlarm } from "../app/store/alarms/actionCreators";
-import { editCurentAlarm, removeCurentAlarm } from "../app/store/alarms/thunk";
+import {
+  editCurrentAlarm,
+  removeCurrentAlarm,
+} from "../app/store/alarms/thunk";
 import { AlarmForm } from "../shared/components/alarm-form";
 
 export const EditPage = memo(() => {
@@ -23,24 +26,24 @@ export const EditPage = memo(() => {
   });
 
   const [selectedDays, setSelectedDays] = useState([]);
-  const [selectedSound, setSelectedSound] = useState(1);
+  const [selectedSoundIndex, setSelectedSoundIndex] = useState(0);
 
   useEffect(() => {
     if (currentAlarm === undefined) return;
     setTime({ m: currentAlarm.time.m, h: currentAlarm.time.h });
     setSelectedDays(currentAlarm.selectedDays);
-    setSelectedSound(currentAlarm.selectedSound);
+    setSelectedSoundIndex(currentAlarm.selectedSoundIndex);
   }, [id, currentAlarm]);
 
   function handleSubmit() {
     if (currentAlarm !== undefined)
       dispatch(
-        editCurentAlarm({
+        editCurrentAlarm({
           editedAlarm: {
             ...currentAlarm,
             time,
             selectedDays,
-            selectedSound,
+            selectedSoundIndex,
           },
           nav: navigate,
         })
@@ -48,7 +51,7 @@ export const EditPage = memo(() => {
   }
   function handleRemove() {
     if (id) {
-      dispatch(removeCurentAlarm({ id, nav: navigate }));
+      dispatch(removeCurrentAlarm({ id, nav: navigate }));
     }
   }
   return (
@@ -57,8 +60,8 @@ export const EditPage = memo(() => {
       setTime={setTime}
       selectedDays={selectedDays}
       setSelectedDays={setSelectedDays}
-      selectedSound={selectedSound}
-      setSelectedSound={setSelectedSound}
+      selectedSoundIndex={selectedSoundIndex}
+      setSelectedSoundIndex={setSelectedSoundIndex}
     >
       <CustomButton
         textContent="Удалить"
@@ -78,32 +81,3 @@ export const EditPage = memo(() => {
   );
 });
 EditPage.displayName = "EditPage";
-/* <Wrapper>
-      <section className="flex-wrap justify-center p-4">
-        <TimeSelector time={time} setTime={setTime} />
-        <MultiSelect
-          selectedDays={selectedDays}
-          setSelectedDays={setSelectedDays}
-        />
-        <CustomSelect
-          selectedSound={selectedSound}
-          setSelectedSound={setSelectedSound}
-        />
-        <div className="flex justify-around">
-          <CustomButton
-            textContent="Удалить"
-            hoverType="red"
-            handleClick={() => handleRemove()}
-          />
-          <CustomButton
-            textContent="Отмена"
-            hoverType="red"
-            handleClick={() => navigate("/")}
-          />
-          <CustomButton
-            textContent="Сохранить"
-            handleClick={() => handleSubmit()}
-          />
-        </div>
-      </section>
-    </Wrapper> */

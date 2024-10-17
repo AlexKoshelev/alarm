@@ -1,9 +1,9 @@
 import { memo } from "react";
-import { Wrapper } from "../ui/wrapper";
-import { CustomSelect } from "./custom-select";
-import { MultiSelect } from "./multi-select";
+
+import { WeekDaysSelect } from "./week-days-select";
 import { TimeSelector } from "./time-selector";
 import PropTypes from "prop-types";
+import { SoundSelect } from "./sound-select";
 export const AlarmForm = memo(
   ({
     children,
@@ -11,24 +11,24 @@ export const AlarmForm = memo(
     setTime,
     selectedDays,
     setSelectedDays,
-    selectedSound,
-    setSelectedSound,
+    selectedSoundIndex,
+    setSelectedSoundIndex,
   }) => {
     return (
-      <Wrapper>
+      <div className="ms w-96 mx-auto p-2 m-8">
         <section className="flex-wrap justify-center p-4">
           <TimeSelector time={time} setTime={setTime} />
-          <MultiSelect
+          <WeekDaysSelect
             selectedDays={selectedDays}
             setSelectedDays={setSelectedDays}
           />
-          <CustomSelect
-            selectedSound={selectedSound}
-            setSelectedSound={setSelectedSound}
+          <SoundSelect
+            selectedSoundIndex={selectedSoundIndex}
+            setSelectedSoundIndex={setSelectedSoundIndex}
           />
           <div className="flex justify-around">{children}</div>
         </section>
-      </Wrapper>
+      </div>
     );
   }
 );
@@ -43,6 +43,6 @@ AlarmForm.propTypes = {
   setTime: PropTypes.func.isRequired,
   selectedDays: PropTypes.array.isRequired,
   setSelectedDays: PropTypes.func.isRequired,
-  selectedSound: PropTypes.number.isRequired,
-  setSelectedSound: PropTypes.func.isRequired,
+  selectedSoundIndex: PropTypes.number.isRequired,
+  setSelectedSoundIndex: PropTypes.func.isRequired,
 };

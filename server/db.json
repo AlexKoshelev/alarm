@@ -2,70 +2,91 @@
   "alarms": [
     {
       "id": "1726419816687",
-      "time": {
-        "m": "09",
-        "h": "22"
-      },
-      "selectedDays": [
+      "triggerTimeMinutes": 1329,
+      "daysOfWeek": [
+        0,
         1,
         2,
         3,
         4,
         5,
-        6,
-        7
+        6
       ],
-      "selectedSound": 1,
-      "status": true
+      "selectedSoundId": "0",
+      "enabled": false
     },
     {
       "id": "1726419827639",
-      "time": {
-        "m": "59",
-        "h": "21"
-      },
-      "selectedDays": [
-        1,
+      "triggerTimeMinutes": 1319,
+      "daysOfWeek": [
         2,
-        3,
-        4,
-        5,
-        7,
-        6
+        3
       ],
-      "selectedSound": 1,
-      "status": true
+      "selectedSoundId": "0",
+      "enabled": false
     },
     {
       "id": "1726480060039",
-      "time": {
-        "m": "06",
-        "h": "22"
-      },
-      "selectedDays": [
+      "triggerTimeMinutes": 1326,
+      "daysOfWeek": [
+        0,
         1,
         2,
         3,
         4,
         5,
-        6,
-        7
+        6
       ],
-      "selectedSound": 1,
-      "status": false
+      "selectedSoundId": "0",
+      "enabled": false
     },
     {
       "id": "1727092976664",
-      "time": {
-        "m": "03",
-        "h": "17"
-      },
-      "selectedDays": [
+      "triggerTimeMinutes": 1023,
+      "daysOfWeek": [
         2,
         1
       ],
-      "selectedSound": 4,
-      "status": false
+      "selectedSoundId": "3",
+      "enabled": true
+    },
+    {
+      "id": "1729162811282",
+      "triggerTimeMinutes": 420,
+      "daysOfWeek": [
+        4
+      ],
+      "selectedSoundId": "0",
+      "enabled": true
+    },
+    {
+      "id": "1729163396691",
+      "daysOfWeek": [
+        4,
+        5
+      ],
+      "enabled": true,
+      "triggerTimeMinutes": 60,
+      "selectedSoundId": "0"
+    },
+    {
+      "id": "1729164041769",
+      "daysOfWeek": [
+        4,
+        2
+      ],
+      "enabled": true,
+      "triggerTimeMinutes": 420,
+      "selectedSoundId": "0"
+    },
+    {
+      "id": "1729164085800",
+      "daysOfWeek": [
+        4
+      ],
+      "enabled": true,
+      "triggerTimeMinutes": 420,
+      "selectedSoundId": "0"
     }
   ]
 }

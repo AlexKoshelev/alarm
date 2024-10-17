@@ -1,52 +1,49 @@
-import { CustomButton } from "../shared/components/custom-button";
-import { memo, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addAlarm } from "../app/store/alarms/thunk";
-import { AlarmForm } from "../shared/components/alarm-form";
+import { AlarmForm, addAlarm } from "@/modules/alarm";
+import { Button } from "@/common/ui/button/button";
 
-export const CreatePage = memo(() => {
+export const CreatePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [time, setTime] = useState({ m: "00", h: "07" });
-  const [selectedDays, setSelectedDays] = useState([new Date().getDay() + 1]);
-  const [selectedSound, setSelectedSound] = useState(1);
+
+  const sevenOclock = 7 * 60;
+
+  const [triggerTimeMinutes, setTriggerTimeMinutes] = useState(sevenOclock);
+  const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState([
+    new Date().getDay(),
+  ]);
+  const [selectedSoundId, setSelectedSoundId] = useState("0");
 
   function handleSubmit() {
     dispatch(
       addAlarm({
-        newAlarm: {
-          id: String(new Date().getTime()),
-          time,
-          selectedDays,
-          selectedSound,
-          status: true,
-        },
-        nav: navigate,
+        id: String(new Date().getTime()),
+        daysOfWeek: selectedDaysOfWeek,
+        enabled: true,
+        triggerTimeMinutes,
+        selectedSoundId,
       })
-    );
+    ).then(() => navigate("/"));
   }
 
   return (
     <AlarmForm
-      time={time}
-      setTime={setTime}
-      selectedDays={selectedDays}
-      setSelectedDays={setSelectedDays}
-      selectedSound={selectedSound}
-      setSelectedSound={setSelectedSound}
-    >
-      <CustomButton
-        textContent="Отмена"
-        hoverType="red"
-        handleClick={() => navigate("/")}
-      />
-      <CustomButton
-        textContent="Сохранить"
-        handleClick={() => handleSubmit()}
-      />
-    </AlarmForm>
+      bottomContent={
+        <>
+          <Button type="danger" onClick={() => navigate("/")}>
+            Отмена
+          </Button>
+          <Button onClick={handleSubmit}>Сохранить</Button>
+        </>
+      }
+      triggerTimeMinutes={triggerTimeMinutes}
+      setTriggerTimeMinutes={setTriggerTimeMinutes}
+      selectedDaysOfWeek={selectedDaysOfWeek}
+      setSelectedDaysOfWeek={setSelectedDaysOfWeek}
+      selectedSoundId={selectedSoundId}
+      setSelectedSoundId={setSelectedSoundId}
+    />
   );
-});
-
-CreatePage.displayName = "CreatePage";
+};
