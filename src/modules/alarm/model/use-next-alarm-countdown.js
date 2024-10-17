@@ -10,6 +10,7 @@ import { formatTimeDifference } from "@/common/lib/date-time/index.js";
  */
 export const useNextAlarmCountdown = () => {
   const nextAlarm = useSelector(selectNextAlarm);
+
   const [timeRemaining, setTimeRemaining] = useState(null);
   useEffect(() => {
     if (!nextAlarm || !nextAlarm.triggerDate) {

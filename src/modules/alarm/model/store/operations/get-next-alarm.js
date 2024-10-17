@@ -7,7 +7,7 @@
  */
 const calculateTriggerDate = (alarm, currentDate) => {
   const { triggerTimeMinutes, daysOfWeek } = alarm;
-  const currentDay = currentDate.getDay(); // 0 (воскресенье) - 6 (суббота)
+  const currentDay = (currentDate.getDay() - 1) % 7; // 0 (понедельник) - 6 (воскресенье)
   const currentMinutes = currentDate.getHours() * 60 + currentDate.getMinutes();
 
   // Создадим массив объектов с днем недели и разницей в днях от текущего дня
@@ -21,6 +21,7 @@ const calculateTriggerDate = (alarm, currentDate) => {
   for (let i = 0; i < sortedDaysAhead.length; i++) {
     const { difference } = sortedDaysAhead[i];
     const triggerDate = new Date(currentDate);
+
     triggerDate.setDate(currentDate.getDate() + difference);
     triggerDate.setHours(0, 0, 0, 0); // Сброс часов, минут и секунд
     triggerDate.setMinutes(triggerTimeMinutes);
@@ -52,6 +53,7 @@ export const getNextAlarm = (alarms) => {
 
   enabledAlarms.forEach((alarm) => {
     const triggerDate = calculateTriggerDate(alarm, currentDate);
+
     if (triggerDate) {
       const timeDifference = triggerDate - currentDate;
       if (timeDifference < minTimeDifference) {

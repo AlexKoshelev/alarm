@@ -2,7 +2,7 @@ import { useNextAlarmCountdown } from "@/modules/alarm/model/use-next-alarm-coun
 
 export const NextAlarmCountdown = () => {
   const timeRemaining = useNextAlarmCountdown();
-  console.log(timeRemaining);
+
   return (
     <div>
       {timeRemaining ? (
