@@ -1,83 +1,141 @@
-import { CustomButton } from "../common/ui/components/custom-button.jsx";
+/* import { Button } from "@/common/ui/button/button";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { memo, useEffect, useState } from "react";
-import { getCurrentAlarm } from "../app/store/alarms/actionCreators";
-import {
-  editCurrentAlarm,
-  removeCurrentAlarm,
-} from "../app/store/alarms/thunk";
-import { AlarmForm } from "../shared/components/alarm-form";
+import { deleteAlarm, updateAlarm } from "@/modules/alarm";
+import { AlarmForm } from "@/modules/alarm";
 
 export const EditPage = memo(() => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { alarms } = useSelector((state) => state.alarms);
+  const { alarms } = useSelector((state) => state.alarm);
 
-  useEffect(() => {
-    dispatch(getCurrentAlarm(id));
-  }, [id, dispatch, alarms]);
-  const { currentAlarm } = useSelector((state) => state.alarms);
+  const currentAlarm = alarms.find((alarm) => alarm.id === id);
+  console.log(currentAlarm);
 
-  const [time, setTime] = useState({
-    m: "",
-    h: "",
-  });
 
-  const [selectedDays, setSelectedDays] = useState([]);
-  const [selectedSoundIndex, setSelectedSoundIndex] = useState(0);
 
-  useEffect(() => {
-    if (currentAlarm === undefined) return;
-    setTime({ m: currentAlarm.time.m, h: currentAlarm.time.h });
-    setSelectedDays(currentAlarm.selectedDays);
-    setSelectedSoundIndex(currentAlarm.selectedSoundIndex);
-  }, [id, currentAlarm]);
+  const [triggerTimeMinutes, setTriggerTimeMinutes] = useState(
+    currentAlarm.triggerTimeMinutes
+  );
+
+  const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState([
+    ...currentAlarm.daysOfWeek,
+  ]);
+  const [selectedSoundId, setSelectedSoundId] = useState(
+    currentAlarm.selectedSoundId
+  );
 
   function handleSubmit() {
     if (currentAlarm !== undefined)
       dispatch(
-        editCurrentAlarm({
-          editedAlarm: {
-            ...currentAlarm,
-            time,
-            selectedDays,
-            selectedSoundIndex,
-          },
-          nav: navigate,
+        updateAlarm({
+          ...currentAlarm,
         })
-      );
+      ).then(() => navigate("/"));
   }
   function handleRemove() {
     if (id) {
-      dispatch(removeCurrentAlarm({ id, nav: navigate }));
+      dispatch(deleteAlarm(id)).then(() => navigate("/"));
     }
   }
   return (
-    <AlarmForm
-      time={time}
-      setTime={setTime}
-      selectedDays={selectedDays}
-      setSelectedDays={setSelectedDays}
-      selectedSoundIndex={selectedSoundIndex}
-      setSelectedSoundIndex={setSelectedSoundIndex}
-    >
-      <CustomButton
-        textContent="Удалить"
-        hoverType="red"
-        handleClick={() => handleRemove()}
-      />
-      <CustomButton
-        textContent="Отмена"
-        hoverType="red"
-        handleClick={() => navigate("/")}
-      />
-      <CustomButton
-        textContent="Сохранить"
-        handleClick={() => handleSubmit()}
-      />
-    </AlarmForm>
+    <>
+      {currentAlarm && (
+        <AlarmForm
+          bottomContent={
+            <>
+              <Button type="danger" onClick={() => handleRemove(id)}>
+                Удалить
+              </Button>
+              <Button type="danger" onClick={() => navigate("/")}>
+                Отмена
+              </Button>
+              <Button onClick={handleSubmit}>Сохранить</Button>
+            </>
+          }
+          triggerTimeMinutes={triggerTimeMinutes}
+          setTriggerTimeMinutes={setTriggerTimeMinutes}
+          selectedDaysOfWeek={selectedDaysOfWeek}
+          setSelectedDaysOfWeek={setSelectedDaysOfWeek}
+          selectedSoundId={selectedSoundId}
+          setSelectedSoundId={setSelectedSoundId}
+        />
+      )}
+    </>
+  );
+});
+EditPage.displayName = "EditPage";
+ */
+
+import { Button } from "@/common/ui/button/button";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { memo, useEffect, useState } from "react";
+import { deleteAlarm, updateAlarm } from "@/modules/alarm";
+import { AlarmForm } from "@/modules/alarm";
+
+export const EditPage = memo(() => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { alarms } = useSelector((state) => state.alarm);
+  const currentAlarm = alarms.find((alarm) => alarm.id === id);
+
+  const [triggerTimeMinutes, setTriggerTimeMinutes] = useState(
+    currentAlarm ? currentAlarm.triggerTimeMinutes : 0
+  );
+  const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState(
+    currentAlarm ? [...currentAlarm.daysOfWeek] : []
+  );
+  const [selectedSoundId, setSelectedSoundId] = useState(
+    currentAlarm ? currentAlarm.selectedSoundId : null
+  );
+
+  function handleSubmit() {
+    if (currentAlarm) {
+      dispatch(
+        updateAlarm({
+          ...currentAlarm,
+          triggerTimeMinutes,
+          daysOfWeek: selectedDaysOfWeek,
+          selectedSoundId,
+        })
+      ).then(() => navigate("/"));
+    }
+  }
+
+  function handleRemove() {
+    if (id) {
+      dispatch(deleteAlarm(id)).then(() => navigate("/"));
+    }
+  }
+
+  return (
+    <>
+      {currentAlarm && (
+        <AlarmForm
+          bottomContent={
+            <>
+              <Button type="danger" onClick={() => handleRemove(id)}>
+                Удалить
+              </Button>
+              <Button type="danger" onClick={() => navigate("/")}>
+                Отмена
+              </Button>
+              <Button onClick={handleSubmit}>Сохранить</Button>
+            </>
+          }
+          triggerTimeMinutes={triggerTimeMinutes}
+          setTriggerTimeMinutes={setTriggerTimeMinutes}
+          selectedDaysOfWeek={selectedDaysOfWeek}
+          setSelectedDaysOfWeek={setSelectedDaysOfWeek}
+          selectedSoundId={selectedSoundId}
+          setSelectedSoundId={setSelectedSoundId}
+        />
+      )}
+    </>
   );
 });
 EditPage.displayName = "EditPage";

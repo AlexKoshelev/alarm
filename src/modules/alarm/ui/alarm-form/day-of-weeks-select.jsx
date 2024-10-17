@@ -18,6 +18,7 @@ export const DayOfWeekSelect = ({ selectedDays, setSelectedDays }) => {
     { value: 5, label: "Сб" },
     { value: 6, label: "Вс" },
   ];
+
   return (
     <div className="flex gap-2 mb-4">
       {days.map((day) => (

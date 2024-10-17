@@ -77,11 +77,14 @@ export const deleteAlarm = (id) => {
   return async (dispatch) => {
     dispatch(deleteAlarmRequest());
     try {
-      await fetch(`${API_URL}/${id}`, {
+      const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
       });
-      dispatch(deleteAlarmSuccess(id));
-      dispatch(sortAlarms());
+      console.log(response);
+      if (response.ok) {
+        dispatch(deleteAlarmSuccess(id));
+        dispatch(sortAlarms());
+      }
     } catch (error) {
       dispatch(deleteAlarmFailure(error.message));
     }

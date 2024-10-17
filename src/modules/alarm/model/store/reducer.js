@@ -10,6 +10,9 @@ import {
   UPDATE_ALARM_FAILURE,
   SET_CURRENTLY_PLAYING_ALARM,
   SORT_ALARMS,
+  DELETE_ALARM_FAILURE,
+  DELETE_ALARM_REQUEST,
+  DELETE_ALARM_SUCCESS,
 } from "./action-types.js";
 import { sortAlarmsByNextTrigger } from "@/modules/alarm/model/store/operations/sort-alarms-by-next-trigger.js";
 
@@ -89,10 +92,26 @@ export const alarmReducer = (state = initialState, action) => {
 
     case SORT_ALARMS:
       return {
-        alarms: sortAlarmsByNextTrigger(state.alarms),
         ...state,
+        alarms: sortAlarmsByNextTrigger(state.alarms),
       };
-
+    case DELETE_ALARM_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case DELETE_ALARM_SUCCESS:
+      return {
+        ...state,
+        alarms: state.alarms.filter((alarm) => alarm.id !== action.payload),
+      };
+    case DELETE_ALARM_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
