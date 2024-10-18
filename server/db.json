@@ -7,7 +7,7 @@
         4
       ],
       "enabled": true,
-      "triggerTimeMinutes": 623,
+      "triggerTimeMinutes": 604,
       "selectedSoundId": "0"
     },
     {
@@ -17,16 +17,6 @@
       ],
       "enabled": true,
       "triggerTimeMinutes": 420,
-      "selectedSoundId": "0"
-    },
-    {
-      "id": "1729228996456",
-      "daysOfWeek": [
-        5,
-        4
-      ],
-      "enabled": true,
-      "triggerTimeMinutes": 640,
       "selectedSoundId": "0"
     },
     {
