@@ -3,10 +3,40 @@
     {
       "id": "1729224824955",
       "daysOfWeek": [
+        5,
+        4
+      ],
+      "enabled": true,
+      "triggerTimeMinutes": 623,
+      "selectedSoundId": "0"
+    },
+    {
+      "id": "1729225230283",
+      "daysOfWeek": [
         5
       ],
       "enabled": true,
       "triggerTimeMinutes": 420,
+      "selectedSoundId": "0"
+    },
+    {
+      "id": "1729228996456",
+      "daysOfWeek": [
+        5,
+        4
+      ],
+      "enabled": true,
+      "triggerTimeMinutes": 640,
+      "selectedSoundId": "0"
+    },
+    {
+      "id": "1729230334867",
+      "daysOfWeek": [
+        5,
+        4
+      ],
+      "enabled": true,
+      "triggerTimeMinutes": 891,
       "selectedSoundId": "0"
     }
   ]
