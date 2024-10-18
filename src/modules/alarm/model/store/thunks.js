@@ -80,7 +80,6 @@ export const deleteAlarm = (id) => {
       const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
       });
-      console.log(response);
       if (response.ok) {
         dispatch(deleteAlarmSuccess(id));
         dispatch(sortAlarms());

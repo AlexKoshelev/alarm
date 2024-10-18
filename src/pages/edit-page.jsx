@@ -1,7 +1,7 @@
 import { Button } from "@/common/ui/button/button";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { deleteAlarm, updateAlarm } from "@/modules/alarm";
 import { AlarmForm } from "@/modules/alarm";
 
@@ -22,6 +22,14 @@ export const EditPage = memo(() => {
     currentAlarm ? currentAlarm.selectedSoundId : null
   );
 
+  useEffect(() => {
+    if (!currentAlarm) return;
+
+    setTriggerTimeMinutes(currentAlarm.triggerTimeMinutes);
+    setSelectedDaysOfWeek([...currentAlarm.daysOfWeek]);
+    setSelectedSoundId(currentAlarm.selectedSoundId);
+  }, [currentAlarm]);
+
   function handleSubmit() {
     if (currentAlarm) {
       dispatch(
@@ -40,7 +48,11 @@ export const EditPage = memo(() => {
       dispatch(deleteAlarm(id)).then(() => navigate("/"));
     }
   }
-  console.log(currentAlarm);
+
+  if (!currentAlarm || !selectedSoundId) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       {currentAlarm && (

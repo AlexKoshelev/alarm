@@ -1,22 +1,12 @@
 {
   "alarms": [
     {
-      "id": "1729188969489",
+      "id": "1729224824955",
       "daysOfWeek": [
-        4
+        5
       ],
       "enabled": true,
-      "triggerTimeMinutes": 1397,
-      "selectedSoundId": "0"
-    },
-    {
-      "id": "1729188995817",
-      "daysOfWeek": [
-        4,
-        3
-      ],
-      "enabled": true,
-      "triggerTimeMinutes": 1397,
+      "triggerTimeMinutes": 420,
       "selectedSoundId": "0"
     }
   ]
