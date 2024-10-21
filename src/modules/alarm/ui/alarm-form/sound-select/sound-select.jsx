@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { soundList } from "@/modules/alarm/model/sound-list.js";
 import PropTypes from "prop-types";
 import useSound from "use-sound";
-import { PlayIcon } from "@/common/ui/icons/play";
-import { PauseIcon } from "@/common/ui/icons/pause";
+import { PlayIcon } from "./play";
+import { PauseIcon } from "./pause";
 
 export const SoundSelect = ({ selectedSoundId, setSelectedSoundId }) => {
   const [isSoundPlaying, setIsSoundPlaying] = useState(false);

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { DayOfWeekSelect } from "./day-of-weeks-select";
-import { SoundSelect } from "./sound-select";
+import { SoundSelect } from "./sound-select/sound-select";
 import { TimeSelector } from "./time-selector/time-selector";
 
 export const AlarmForm = ({
