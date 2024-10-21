@@ -9,7 +9,7 @@ export const SoundSelect = ({ selectedSoundId, setSelectedSoundId }) => {
   const [isSoundPlaying, setIsSoundPlaying] = useState(false);
   const [play, { stop }] = useSound(soundList[selectedSoundId].url ?? null, {
     loop: true,
-  }); // Инициализируем без URL
+  });
 
   useEffect(() => {
     if (selectedSoundId) {

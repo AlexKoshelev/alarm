@@ -10,13 +10,13 @@ export const DayOfWeekSelect = ({ selectedDays, setSelectedDays }) => {
   };
 
   const days = [
-    { value: 0, label: "Пн" },
-    { value: 1, label: "Вт" },
-    { value: 2, label: "Ср" },
-    { value: 3, label: "Чт" },
-    { value: 4, label: "Пт" },
-    { value: 5, label: "Сб" },
-    { value: 6, label: "Вс" },
+    { value: 1, label: "Пн" },
+    { value: 2, label: "Вт" },
+    { value: 3, label: "Ср" },
+    { value: 4, label: "Чт" },
+    { value: 5, label: "Пт" },
+    { value: 6, label: "Сб" },
+    { value: 0, label: "Вс" },
   ];
 
   return (
@@ -29,7 +29,7 @@ export const DayOfWeekSelect = ({ selectedDays, setSelectedDays }) => {
             selectedDays.includes(day.value)
               ? "bg-gray-800  text-lime-400"
               : `bg-gray-900 ${
-                  (day.value === 5 || day.value === 6) && "text-red-500"
+                  (day.value === 0 || day.value === 6) && "text-red-500"
                 }`
           }`}
         >

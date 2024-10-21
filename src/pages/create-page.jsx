@@ -12,7 +12,7 @@ export const CreatePage = () => {
 
   const [triggerTimeMinutes, setTriggerTimeMinutes] = useState(sevenOclock);
   const [selectedDaysOfWeek, setSelectedDaysOfWeek] = useState([
-    new Date().getDay(),
+    new Date().getDay() + 1,
   ]);
   const [selectedSoundId, setSelectedSoundId] = useState("0");
 
