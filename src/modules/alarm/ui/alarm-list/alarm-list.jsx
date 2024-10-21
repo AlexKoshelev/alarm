@@ -11,10 +11,10 @@ export const AlarmList = () => {
   }
 
   return (
-    <section>
+    <div>
       {alarms.map((alarm) => (
         <AlarmListItem key={alarm.id} data={alarm} />
       ))}
-    </section>
+    </div>
   );
 };
