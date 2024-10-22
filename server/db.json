@@ -7,38 +7,46 @@
       ],
       "enabled": true,
       "triggerTimeMinutes": 428,
-      "selectedSoundId": "0"
+      "selectedSoundId": "0",
+      "selectedDaysOfWeek": [
+        2
+      ]
     },
     {
-      "id": "1729532496921",
-      "daysOfWeek": [
-        2,
+      "id": "1729575687478",
+      "triggerTimeMinutes": 305,
+      "selectedDaysOfWeek": [
         3,
-        4,
+        5,
+        1,
+        2,
+        6,
         0
       ],
-      "enabled": true,
-      "triggerTimeMinutes": 256,
-      "selectedSoundId": "0"
-    },
-    {
-      "id": "1729532872183",
+      "selectedSoundId": "3",
       "daysOfWeek": [
-        2
-      ],
-      "enabled": true,
-      "triggerTimeMinutes": 355,
-      "selectedSoundId": "0"
-    },
-    {
-      "id": "1729533253411",
-      "daysOfWeek": [
+        3,
+        5,
+        1,
         2,
-        6
+        6,
+        0
       ],
-      "enabled": true,
-      "triggerTimeMinutes": 422,
-      "selectedSoundId": "0"
+      "enabled": true
+    },
+    {
+      "id": "1729575890357",
+      "triggerTimeMinutes": 420,
+      "selectedDaysOfWeek": [
+        3,
+        4
+      ],
+      "selectedSoundId": "2",
+      "daysOfWeek": [
+        3,
+        4
+      ],
+      "enabled": true
     }
   ]
 }
