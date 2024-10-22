@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useSound from "use-sound";
 import {
@@ -8,6 +8,7 @@ import {
 import { Button } from "@/common/ui/button/button";
 import { soundList } from "@/modules/alarm/model/sound-list";
 import { Modal } from "@/common/ui/modal/modal";
+
 export const AlarmTriggerModal = () => {
   const currentlyPlayingAlarm = useSelector(
     (state) => state.alarm.currentlyPlayingAlarm
@@ -16,27 +17,23 @@ export const AlarmTriggerModal = () => {
     (sound) => sound.id === currentlyPlayingAlarm?.selectedSoundId
   );
   const dispatch = useDispatch();
-  const inputRef = useRef(null);
+  const { soundResolution } = useSelector((state) => state.alarm);
 
-  const [play, { stop }] = useSound(selectedSound ? selectedSound.url : null, {
-    loop: true,
-  });
+  const [play, { stop }] = useSound(
+    soundResolution && (selectedSound ? selectedSound.url : null),
+    {
+      loop: true,
+    }
+  );
 
   useEffect(() => {
-    setTimeout(() => {
-      if (currentlyPlayingAlarm && selectedSound) {
-        if (inputRef?.current) {
-          inputRef?.current.click();
-
-          play();
-        }
-      }
-    }, 0);
-
+    if (currentlyPlayingAlarm && soundResolution) {
+      play();
+    }
     return () => {
       stop();
     };
-  }, [currentlyPlayingAlarm, selectedSound, play, stop]);
+  }, [currentlyPlayingAlarm, play, soundResolution, stop]);
 
   const handleConfirm = () => {
     stop();
@@ -49,7 +46,6 @@ export const AlarmTriggerModal = () => {
   return (
     <Modal>
       <button
-        ref={inputRef}
         id="autoPlayTrigger"
         onClick={() => {
           play();

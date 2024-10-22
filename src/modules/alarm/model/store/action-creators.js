@@ -10,8 +10,11 @@ import {
   UPDATE_ALARM_FAILURE,
   DELETE_ALARM_REQUEST,
   DELETE_ALARM_SUCCESS,
-  DELETE_ALARM_FAILURE, SET_CURRENTLY_PLAYING_ALARM, SORT_ALARMS,
-} from './action-types.js';
+  DELETE_ALARM_FAILURE,
+  SET_CURRENTLY_PLAYING_ALARM,
+  SORT_ALARMS,
+  TOGGLE_SOUND_RESOLUTION,
+} from "./action-types.js";
 
 export const fetchAlarmsRequest = () => ({
   type: FETCH_ALARMS_REQUEST,
@@ -78,3 +81,6 @@ export const sortAlarms = () => ({
   type: SORT_ALARMS,
 });
 
+export const toggleSoundResolution = () => ({
+  type: TOGGLE_SOUND_RESOLUTION,
+});

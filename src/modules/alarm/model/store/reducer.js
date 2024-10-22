@@ -13,11 +13,13 @@ import {
   DELETE_ALARM_FAILURE,
   DELETE_ALARM_REQUEST,
   DELETE_ALARM_SUCCESS,
+  TOGGLE_SOUND_RESOLUTION,
 } from "./action-types.js";
 import { sortAlarmsByNextTrigger } from "@/modules/alarm/model/store/operations/sort-alarms-by-next-trigger.js";
 
 const initialState = {
   alarms: [],
+  soundResolution: false,
   currentlyPlayingAlarm: null,
   loading: false,
   error: null,
@@ -111,6 +113,11 @@ export const alarmReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    case TOGGLE_SOUND_RESOLUTION:
+      return {
+        ...state,
+        soundResolution: !state.soundResolution,
       };
     default:
       return state;
