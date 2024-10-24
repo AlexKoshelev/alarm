@@ -1,51 +1,37 @@
 import { useState, useEffect } from "react";
-import { soundList } from "@/modules/alarm/model/sound-list.js";
 import PropTypes from "prop-types";
-import useSound from "use-sound";
+import { soundList } from "@/modules/alarm/model/sound-list.js";
+import { useAudio } from "@/common/lib/audio";
 import { PlayIcon } from "./play";
 import { PauseIcon } from "./pause";
 
 export const SoundSelect = ({ selectedSoundId, setSelectedSoundId }) => {
   const [isSoundPlaying, setIsSoundPlaying] = useState(false);
-  const [play, { stop }] = useSound(soundList[selectedSoundId].url ?? null, {
-    loop: true,
-  });
-
-  useEffect(() => {
-    if (selectedSoundId) {
-      const selectedSound = soundList.find(
-        (sound) => sound.id === selectedSoundId
-      );
-      if (selectedSound) {
-        play();
-      }
-    } else {
-      stop();
-    }
-
-    return () => {
-      stop();
-    };
-  }, [selectedSoundId, play, stop]);
+  const { play, stop } = useAudio();
 
   const handleChange = (e) => {
     const selectedId = e.target.value;
     setSelectedSoundId(selectedId);
   };
+
   function handlePlay() {
-    if (isSoundPlaying === false) {
-      setIsSoundPlaying(true);
-      play();
-    } else {
-      setIsSoundPlaying(false);
-      stop();
-    }
+    setIsSoundPlaying(prev => !prev)
   }
 
   useEffect(() => {
-    setIsSoundPlaying(false);
-    stop();
-  }, [selectedSoundId, stop]);
+    setIsSoundPlaying(false)
+  }, [selectedSoundId]);
+
+  useEffect(() => {
+    if (isSoundPlaying) {
+      const url = soundList[selectedSoundId].url;
+      if (url) {
+        play({ url, loop: true });
+      }
+    } else {
+      stop();
+    }
+  }, [isSoundPlaying])
 
   return (
     <div className="flex relative">

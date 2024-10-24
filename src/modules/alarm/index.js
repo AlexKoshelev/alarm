@@ -1,4 +1,5 @@
 export { alarmReducer } from "./model/store/reducer.js";
+export { toggleSoundResolution } from "./model/store/action-creators.js";
 export {
   fetchAlarms,
   addAlarm,

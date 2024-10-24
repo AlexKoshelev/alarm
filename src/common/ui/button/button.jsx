@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-export const Button = ({ children, type = "success", onClick, cls }) => {
+export const Button = ({ children, type = "success", onClick, className }) => {
   const hoverStyle =
     type === "danger" ? "hover:text-red-500" : "hover:text-lime-400";
 
   return (
     <button
-      className={`px-6 py-2 rounded hover:bg-gray-800 ${hoverStyle} ${cls}`}
+      className={`px-6 py-2 rounded hover:bg-gray-800 ${hoverStyle} ${className}`}
       onClick={onClick}
     >
       {children}
@@ -20,5 +20,5 @@ Button.propTypes = {
     PropTypes.string.isRequired,
     PropTypes.node.isRequired,
   ]),
-  cls: PropTypes.string,
+  className: PropTypes.string,
 };

@@ -1,39 +1,32 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useSound from "use-sound";
-import {
-  setCurrentlyPlayingAlarm,
-  sortAlarms,
-} from "@/modules/alarm/model/store/action-creators.js";
+import { useAudio } from "@/common/lib/audio";
 import { Button } from "@/common/ui/button/button";
-import { soundList } from "@/modules/alarm/model/sound-list";
 import { Modal } from "@/common/ui/modal/modal";
+import { setCurrentlyPlayingAlarm, sortAlarms } from "../../model/store/action-creators.js";
+import { soundList } from "../../model/sound-list";
 
 export const AlarmTriggerModal = () => {
-  const currentlyPlayingAlarm = useSelector(
-    (state) => state.alarm.currentlyPlayingAlarm
-  );
+  const currentlyPlayingAlarm = useSelector((state) => state.alarm.currentlyPlayingAlarm);
   const selectedSound = soundList.find(
     (sound) => sound.id === currentlyPlayingAlarm?.selectedSoundId
   );
   const dispatch = useDispatch();
   const { soundResolution } = useSelector((state) => state.alarm);
 
-  const [play, { stop }] = useSound(
-    soundResolution && (selectedSound ? selectedSound.url : null),
-    {
-      loop: true,
-    }
-  );
+  const { play, stop } = useAudio();
 
   useEffect(() => {
-    if (currentlyPlayingAlarm && soundResolution) {
-      play();
+    if (currentlyPlayingAlarm && soundResolution && selectedSound) {
+      const url = selectedSound.url;
+      if (url) {
+        play({ url, loop: true });
+      }
     }
     return () => {
       stop();
     };
-  }, [currentlyPlayingAlarm, play, soundResolution, stop]);
+  }, [currentlyPlayingAlarm, soundResolution]);
 
   const handleConfirm = () => {
     stop();
@@ -41,23 +34,12 @@ export const AlarmTriggerModal = () => {
     dispatch(sortAlarms());
   };
 
-  if (!currentlyPlayingAlarm) return null;
-
   return (
-    <Modal>
-      <button
-        id="autoPlayTrigger"
-        onClick={() => {
-          play();
-        }}
-        style={{ display: "none" }}
-      />
-      <div className="ms w-96 mx-auto p-2 m-8 ">
-        <div className="flex-col text-center justify-center align-middle ">
-          <div className="mb-5 ">Сработал будильник</div>
-          <div className="flex align-middle justify-center">
-            <Button onClick={handleConfirm}>Отключить</Button>
-          </div>
+    <Modal isOpen={!currentlyPlayingAlarm} onClose={handleConfirm}>
+      <div className="flex-col text-center justify-center align-middle">
+        <div className="mb-5">Сработал будильник</div>
+        <div className="flex align-middle justify-center">
+          <Button onClick={handleConfirm}>Отключить</Button>
         </div>
       </div>
     </Modal>
