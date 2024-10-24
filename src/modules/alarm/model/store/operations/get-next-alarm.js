@@ -7,7 +7,7 @@
  */
 const calculateTriggerDate = (alarm, currentDate) => {
   const { triggerTimeMinutes, daysOfWeek } = alarm;
-  const currentDay = (currentDate.getDay() - 1) % 7; // 0 (понедельник) - 6 (воскресенье)
+  const currentDay = currentDate.getDay();
   const currentMinutes = currentDate.getHours() * 60 + currentDate.getMinutes();
 
   // Создадим массив объектов с днем недели и разницей в днях от текущего дня
