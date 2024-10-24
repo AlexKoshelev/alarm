@@ -5,7 +5,7 @@ import { TimeSelector } from "./time-selector/time-selector";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { Button } from "@/common/ui/button/button";
+import { Button } from "@/common/ui/button";
 
 const sevenOclock = 7 * 60;
 const tomorrow = [new Date().getDay() + 1];

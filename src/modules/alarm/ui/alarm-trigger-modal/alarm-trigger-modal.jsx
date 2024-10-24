@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAudio } from "@/common/lib/audio";
-import { Button } from "@/common/ui/button/button";
+import { Button } from "@/common/ui/button";
 import { Modal } from "@/common/ui/modal/modal";
 import { setCurrentlyPlayingAlarm, sortAlarms } from "../../model/store/action-creators.js";
 import { soundList } from "../../model/sound-list";

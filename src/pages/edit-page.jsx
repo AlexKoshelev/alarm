@@ -1,4 +1,4 @@
-import { Button } from "@/common/ui/button/button";
+import { Button } from "@/common/ui/button";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAlarm, updateAlarm } from "@/modules/alarm";

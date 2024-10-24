@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@/common/ui/button/button";
+import { Button } from "@/common/ui/button";
 import { useAudio } from "@/common/lib/audio";
 import { toggleSoundResolution } from "@/modules/alarm";
 import { PlusIcon } from "./plus-icon.jsx";

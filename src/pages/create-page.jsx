@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { AlarmForm, addAlarm } from "@/modules/alarm";
-import { Button } from "@/common/ui/button/button";
+import { Button } from "@/common/ui/button";
 
 export const CreatePage = () => {
   const navigate = useNavigate();
