@@ -8,9 +8,10 @@ export const CreatePage = () => {
   function handleSubmit(dispatch, data) {
     dispatch(
       addAlarm({
-        ...data,
         id: String(new Date().getTime()),
         daysOfWeek: data.selectedDaysOfWeek,
+        triggerTimeMinutes: data.triggerTimeMinutes,
+        selectedSoundId: data.selectedSoundId,
         enabled: true,
       })
     ).then(() => navigate("/"));
