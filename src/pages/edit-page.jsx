@@ -16,8 +16,9 @@ export const EditPage = () => {
       dispatch(
         updateAlarm({
           ...currentAlarm,
-          ...data,
           daysOfWeek: data.selectedDaysOfWeek,
+          triggerTimeMinutes: data.triggerTimeMinutes,
+          selectedSoundId: data.selectedSoundId,
         })
       ).then(() => navigate("/"));
     }
