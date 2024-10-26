@@ -24,7 +24,7 @@ export const SettingsPanel = () => {
     <div className="flex items-center justify-between pt-1">
       <Button
         type={soundResolution ? "danger" : "success"}
-        className="px-[4px] inline-flex gap-x-2"
+        className="px-[4px] inline-flex gap-x-2 text-sm"
         onClick={handleToggleSoundResolution}
       >
         {soundResolution ? (
