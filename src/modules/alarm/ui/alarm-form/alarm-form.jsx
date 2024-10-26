@@ -6,9 +6,10 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Button } from "@/common/ui/button";
+import { getNextDayOfWeekNumber } from "@/common/lib/date-time";
 
 const sevenOclock = 7 * 60;
-const tomorrow = [new Date().getDay() + 1];
+const tomorrow = [getNextDayOfWeekNumber()];
 const firstSoundId = "0";
 
 export const AlarmForm = ({ bottomContent, handleSubmit }) => {

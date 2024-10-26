@@ -1,51 +1,28 @@
 {
   "alarms": [
     {
-      "id": "1729532189390",
+      "id": "1729921465952",
       "daysOfWeek": [
-        2
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
       ],
-      "enabled": true,
-      "triggerTimeMinutes": 428,
+      "triggerTimeMinutes": 424,
       "selectedSoundId": "0",
-      "selectedDaysOfWeek": [
-        2
-      ]
-    },
-    {
-      "id": "1729575687478",
-      "triggerTimeMinutes": 1242,
-      "selectedDaysOfWeek": [
-        3,
-        5,
-        1,
-        2,
-        6,
-        0
-      ],
-      "selectedSoundId": "3",
-      "daysOfWeek": [
-        3,
-        5,
-        1,
-        2,
-        6,
-        0
-      ],
       "enabled": true
     },
     {
-      "id": "1729575890357",
-      "triggerTimeMinutes": 420,
-      "selectedDaysOfWeek": [
-        3,
-        4
-      ],
-      "selectedSoundId": "2",
+      "id": "1729922239712",
       "daysOfWeek": [
-        3,
-        4
+        0
       ],
+      "triggerTimeMinutes": 420,
+      "selectedSoundId": "0",
       "enabled": true
     }
   ]
