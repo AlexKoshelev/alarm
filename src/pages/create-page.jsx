@@ -21,11 +21,9 @@ export const CreatePage = () => {
     <AlarmForm
       handleSubmit={handleSubmit}
       bottomContent={
-        <>
-          <Button type="danger" onClick={() => navigate("/")}>
-            Отмена
-          </Button>
-        </>
+        <Button type="danger" onClick={() => navigate("/")}>
+          Отмена
+        </Button>
       }
     />
   );
