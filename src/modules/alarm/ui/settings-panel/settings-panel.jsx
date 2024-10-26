@@ -24,10 +24,18 @@ export const SettingsPanel = () => {
     <div className="flex items-center justify-between pt-1">
       <Button
         type={soundResolution ? "danger" : "success"}
-        className="px-1 inline-flex gap-x-2"
+        className="px-[4px] inline-flex gap-x-2"
         onClick={handleToggleSoundResolution}
       >
-        {soundResolution ? <>Выключить: <SoundOffIcon /></> : <>Включить: <SoundOnIcon /></>}
+        {soundResolution ? (
+          <>
+            Выключить: <SoundOffIcon />
+          </>
+        ) : (
+          <>
+            Включить: <SoundOnIcon />
+          </>
+        )}
       </Button>
       <Link className="ml-auto" to="/create">
         <PlusIcon />
