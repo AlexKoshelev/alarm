@@ -15,11 +15,13 @@ export const useAlarmPlayingTrigger = () => {
       if (!nextAlarm || currentlyPlayingAlarm) return;
 
       const now = new Date();
-      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      const currentSeconds =
+        (now.getHours() * 60 + now.getMinutes()) * 60 + now.getSeconds();
       const currentDay = now.getDay();
+      const triggerTimeSeconds = nextAlarm.triggerTimeMinutes * 60;
 
       if (
-        nextAlarm.triggerTimeMinutes === currentMinutes &&
+        triggerTimeSeconds === currentSeconds &&
         nextAlarm.daysOfWeek.includes(currentDay)
       ) {
         dispatch(setCurrentlyPlayingAlarm(nextAlarm));

@@ -3,11 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAudio } from "@/common/lib/audio";
 import { Button } from "@/common/ui/button";
 import { Modal } from "@/common/ui/modal";
-import { setCurrentlyPlayingAlarm, sortAlarms } from "../../model/store/action-creators.js";
+import {
+  setCurrentlyPlayingAlarm,
+  sortAlarms,
+} from "../../model/store/action-creators.js";
 import { soundList } from "../../model/sound-list";
 
 export const AlarmTriggerModal = () => {
-  const currentlyPlayingAlarm = useSelector((state) => state.alarm.currentlyPlayingAlarm);
+  const currentlyPlayingAlarm = useSelector(
+    (state) => state.alarm.currentlyPlayingAlarm
+  );
   const selectedSound = soundList.find(
     (sound) => sound.id === currentlyPlayingAlarm?.selectedSoundId
   );
@@ -26,7 +31,7 @@ export const AlarmTriggerModal = () => {
     return () => {
       stop();
     };
-  }, [currentlyPlayingAlarm, soundResolution]);
+  }, [currentlyPlayingAlarm, selectedSound, soundResolution]);
 
   const handleConfirm = () => {
     stop();
