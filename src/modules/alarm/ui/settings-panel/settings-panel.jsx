@@ -10,14 +10,11 @@ import { SoundOnIcon } from "./sound-on-icon.jsx";
 export const SettingsPanel = () => {
   const dispatch = useDispatch();
   const { soundResolution } = useSelector((state) => state.alarm);
-  const { play, stop } = useAudio();
+  const { play } = useAudio();
 
   function handleToggleSoundResolution() {
     dispatch(toggleSoundResolution());
-    play({ url: "/sounds/3.mp3" });
-    setTimeout(() => {
-      stop();
-    }, 450);
+    play({ url: "/sounds/low-short-beep.mp3" });
   }
 
   return (
