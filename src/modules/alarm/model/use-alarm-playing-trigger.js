@@ -12,23 +12,28 @@ export const useAlarmPlayingTrigger = () => {
 
   useEffect(() => {
     const checkAlarm = () => {
+      const now = new Date();
       if (!nextAlarm || currentlyPlayingAlarm) return;
 
-      const now = new Date();
-      const currentSeconds =
-        (now.getHours() * 60 + now.getMinutes()) * 60 + now.getSeconds();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
       const currentDay = now.getDay();
-      const triggerTimeSeconds = nextAlarm.triggerTimeMinutes * 60;
 
       if (
-        triggerTimeSeconds === currentSeconds &&
+        nextAlarm.triggerTimeMinutes === currentMinutes &&
         nextAlarm.daysOfWeek.includes(currentDay)
       ) {
         dispatch(setCurrentlyPlayingAlarm(nextAlarm));
       }
     };
+    const now = new Date();
+    const delay = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 
-    const intervalId = setInterval(checkAlarm, 1000);
+    let intervalId;
+
+    setTimeout(() => {
+      checkAlarm();
+      intervalId = setInterval(checkAlarm, 60000);
+    }, delay);
 
     return () => clearInterval(intervalId);
   }, [nextAlarm, currentlyPlayingAlarm, dispatch]);
