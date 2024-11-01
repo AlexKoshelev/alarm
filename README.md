@@ -1,5 +1,7 @@
-   # alarm 
-   # Установка зависимостей
+# alarm
+
+# Установка зависимостей
+
 1. npm i
    # Запуск JSON-server
 2. npx json-server server/db.json
