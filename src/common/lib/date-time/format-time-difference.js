@@ -17,5 +17,5 @@ export const formatTimeDifference = (ms) => {
     if (minutes > 0) parts.push(`${minutes} мин.`);
     parts.push(`${seconds} сек.`);
 
-    return parts.join(' ');
+    return parts.join(" ");
 };

@@ -6,6 +6,6 @@
  */
 
 export function getDayOfWeekLabel(dayIndex) {
-  const daysOfWeek = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
-  return daysOfWeek[Number(dayIndex)];
+    const daysOfWeek = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+    return daysOfWeek[Number(dayIndex)];
 }

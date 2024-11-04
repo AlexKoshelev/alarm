@@ -6,7 +6,7 @@
  * @returns {string[]} Массив строк с двумя цифрами
  */
 export const rangeHoursAndMinutes = (length) => {
-  return Array.from({ length }, (_, i) => i);
+    return Array.from({ length }, (_, i) => i);
 };
 
 /**
@@ -16,7 +16,7 @@ export const rangeHoursAndMinutes = (length) => {
  * @returns {{hours: number, remainingMinutes: number}} Объект с часами и минутами
  */
 export function minutesToHoursAndMinutes(minutes) {
-  let hours = Math.floor(minutes / 60);
-  let remainingMinutes = minutes % 60;
-  return { hours, remainingMinutes };
+    let hours = Math.floor(minutes / 60);
+    let remainingMinutes = minutes % 60;
+    return { hours, remainingMinutes };
 }

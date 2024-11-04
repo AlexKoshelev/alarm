@@ -4,17 +4,17 @@ import { AlarmListItem } from "./alarm-list-item.jsx";
 import { EmptyListContent } from "./empty-list-content.jsx";
 
 export const AlarmList = () => {
-  const alarms = useSelector(selectAlarms);
+    const alarms = useSelector(selectAlarms);
 
-  if (alarms.length === 0) {
-    return <EmptyListContent />;
-  }
+    if (alarms.length === 0) {
+        return <EmptyListContent />;
+    }
 
-  return (
-    <div>
-      {alarms.map((alarm) => (
-        <AlarmListItem key={alarm.id} data={alarm} />
-      ))}
-    </div>
-  );
+    return (
+        <div>
+            {alarms.map((alarm) => (
+                <AlarmListItem key={alarm.id} data={alarm} />
+            ))}
+        </div>
+    );
 };

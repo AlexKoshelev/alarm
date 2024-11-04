@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 let audioContext = null;
 let gainNode = null;
@@ -10,13 +10,14 @@ export const useAudio = () => {
 
     const initAudioContext = () => {
         if (!audioContext) {
-            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            const AudioContextClass =
+                window.AudioContext || window.webkitAudioContext;
             audioContext = new AudioContextClass();
             gainNode = audioContext.createGain();
             gainNode.connect(audioContext.destination);
         }
 
-        if (audioContext.state === 'suspended') {
+        if (audioContext.state === "suspended") {
             audioContext.resume();
         }
     };
