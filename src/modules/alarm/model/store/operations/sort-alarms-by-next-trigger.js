@@ -5,5 +5,7 @@
  * @returns {Array} - Отсортированный список будильников.
  */
 export const sortAlarmsByNextTrigger = (alarms) => {
-    return alarms.toSorted((a, b) => a.triggerTimeMinutes - b.triggerTimeMinutes);
+    return alarms.toSorted(
+        (a, b) => a.triggerTimeMinutes - b.triggerTimeMinutes,
+    );
 };

@@ -6,36 +6,37 @@
  * @returns {Date|null} - Дата и время следующего срабатывания будильника или null, если не найдено.
  */
 const calculateTriggerDate = (alarm, currentDate) => {
-  const { triggerTimeMinutes, daysOfWeek } = alarm;
-  const currentDay = currentDate.getDay();
-  const currentMinutes = currentDate.getHours() * 60 + currentDate.getMinutes();
+    const { triggerTimeMinutes, daysOfWeek } = alarm;
+    const currentDay = currentDate.getDay();
+    const currentMinutes =
+        currentDate.getHours() * 60 + currentDate.getMinutes();
 
-  // Создадим массив объектов с днем недели и разницей в днях от текущего дня
-  const sortedDaysAhead = daysOfWeek
-    .map((day) => ({
-      day,
-      difference: (day - currentDay + 7) % 7,
-    }))
-    .sort((a, b) => a.difference - b.difference);
+    // Создадим массив объектов с днем недели и разницей в днях от текущего дня
+    const sortedDaysAhead = daysOfWeek
+        .map((day) => ({
+            day,
+            difference: (day - currentDay + 7) % 7,
+        }))
+        .sort((a, b) => a.difference - b.difference);
 
-  for (let i = 0; i < sortedDaysAhead.length; i++) {
-    const { difference } = sortedDaysAhead[i];
-    const triggerDate = new Date(currentDate);
+    for (let i = 0; i < sortedDaysAhead.length; i++) {
+        const { difference } = sortedDaysAhead[i];
+        const triggerDate = new Date(currentDate);
 
-    triggerDate.setDate(currentDate.getDate() + difference);
-    triggerDate.setHours(0, 0, 0, 0); // Сброс часов, минут и секунд
-    triggerDate.setMinutes(triggerTimeMinutes);
+        triggerDate.setDate(currentDate.getDate() + difference);
+        triggerDate.setHours(0, 0, 0, 0); // Сброс часов, минут и секунд
+        triggerDate.setMinutes(triggerTimeMinutes);
 
-    if (difference === 0 && triggerTimeMinutes <= currentMinutes) {
-      // Если будильник сегодня, но время уже прошло, пропустим
-      continue;
+        if (difference === 0 && triggerTimeMinutes <= currentMinutes) {
+            // Если будильник сегодня, но время уже прошло, пропустим
+            continue;
+        }
+
+        return triggerDate;
     }
 
-    return triggerDate;
-  }
-
-  // Если ни один будильник не сработает в ближайшие дни, вернем null
-  return null;
+    // Если ни один будильник не сработает в ближайшие дни, вернем null
+    return null;
 };
 
 /**
@@ -45,23 +46,23 @@ const calculateTriggerDate = (alarm, currentDate) => {
  * @returns {Object|null} - Следующий активный будильник с датой срабатывания или null.
  */
 export const getNextAlarm = (alarms) => {
-  const currentDate = new Date();
-  const enabledAlarms = alarms.filter((alarm) => alarm.enabled);
+    const currentDate = new Date();
+    const enabledAlarms = alarms.filter((alarm) => alarm.enabled);
 
-  let nextAlarm = null;
-  let minTimeDifference = Infinity;
+    let nextAlarm = null;
+    let minTimeDifference = Infinity;
 
-  enabledAlarms.forEach((alarm) => {
-    const triggerDate = calculateTriggerDate(alarm, currentDate);
+    enabledAlarms.forEach((alarm) => {
+        const triggerDate = calculateTriggerDate(alarm, currentDate);
 
-    if (triggerDate) {
-      const timeDifference = triggerDate - currentDate;
-      if (timeDifference < minTimeDifference) {
-        minTimeDifference = timeDifference;
-        nextAlarm = { ...alarm, triggerDate };
-      }
-    }
-  });
+        if (triggerDate) {
+            const timeDifference = triggerDate - currentDate;
+            if (timeDifference < minTimeDifference) {
+                minTimeDifference = timeDifference;
+                nextAlarm = { ...alarm, triggerDate };
+            }
+        }
+    });
 
-  return nextAlarm;
+    return nextAlarm;
 };

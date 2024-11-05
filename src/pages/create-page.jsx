@@ -3,28 +3,28 @@ import { AlarmForm, addAlarm } from "@/modules/alarm";
 import { Button } from "@/common/ui/button";
 
 export const CreatePage = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  function handleSubmit(dispatch, data) {
-    dispatch(
-      addAlarm({
-        id: String(new Date().getTime()),
-        daysOfWeek: data.selectedDaysOfWeek,
-        triggerTimeMinutes: data.triggerTimeMinutes,
-        selectedSoundId: data.selectedSoundId,
-        enabled: true,
-      })
-    ).then(() => navigate("/"));
-  }
+    function handleSubmit(dispatch, data) {
+        dispatch(
+            addAlarm({
+                id: String(new Date().getTime()),
+                daysOfWeek: data.selectedDaysOfWeek,
+                triggerTimeMinutes: data.triggerTimeMinutes,
+                selectedSoundId: data.selectedSoundId,
+                enabled: true,
+            }),
+        ).then(() => navigate("/"));
+    }
 
-  return (
-    <AlarmForm
-      handleSubmit={handleSubmit}
-      bottomContent={
-        <Button type="danger" onClick={() => navigate("/")}>
-          Отмена
-        </Button>
-      }
-    />
-  );
+    return (
+        <AlarmForm
+            handleSubmit={handleSubmit}
+            bottomContent={
+                <Button type="danger" onClick={() => navigate("/")}>
+                    Отмена
+                </Button>
+            }
+        />
+    );
 };

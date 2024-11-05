@@ -1,10 +1,10 @@
 export { alarmReducer } from "./model/store/reducer.js";
 export { toggleSoundResolution } from "./model/store/action-creators.js";
 export {
-  fetchAlarms,
-  addAlarm,
-  updateAlarm,
-  deleteAlarm,
+    fetchAlarms,
+    addAlarm,
+    updateAlarm,
+    deleteAlarm,
 } from "./model/store/thunks.js";
 export { useAlarmPlayingTrigger } from "./model/use-alarm-playing-trigger.js";
 export { AlarmList } from "./ui/alarm-list/alarm-list.jsx";

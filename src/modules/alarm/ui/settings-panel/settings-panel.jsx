@@ -8,35 +8,35 @@ import { SoundOffIcon } from "./sound-off-icon.jsx";
 import { SoundOnIcon } from "./sound-on-icon.jsx";
 
 export const SettingsPanel = () => {
-  const dispatch = useDispatch();
-  const { soundResolution } = useSelector((state) => state.alarm);
-  const { play } = useAudio();
+    const dispatch = useDispatch();
+    const { soundResolution } = useSelector((state) => state.alarm);
+    const { play } = useAudio();
 
-  function handleToggleSoundResolution() {
-    dispatch(toggleSoundResolution());
-    play({ url: "/sounds/low-short-beep.mp3" });
-  }
+    function handleToggleSoundResolution() {
+        dispatch(toggleSoundResolution());
+        play({ url: "/sounds/low-short-beep.mp3" });
+    }
 
-  return (
-    <div className="flex items-center justify-between pt-1">
-      <Button
-        type={soundResolution ? "danger" : "success"}
-        className="px-[4px] inline-flex gap-x-2 text-sm"
-        onClick={handleToggleSoundResolution}
-      >
-        {soundResolution ? (
-          <>
-            Выключить: <SoundOffIcon />
-          </>
-        ) : (
-          <>
-            Включить: <SoundOnIcon />
-          </>
-        )}
-      </Button>
-      <Link className="ml-auto" to="/create">
-        <PlusIcon />
-      </Link>
-    </div>
-  );
+    return (
+        <div className="flex items-center justify-between pt-1">
+            <Button
+                type={soundResolution ? "danger" : "success"}
+                className="px-[4px] inline-flex gap-x-2 text-sm"
+                onClick={handleToggleSoundResolution}
+            >
+                {soundResolution ? (
+                    <>
+                        Выключить: <SoundOffIcon />
+                    </>
+                ) : (
+                    <>
+                        Включить: <SoundOnIcon />
+                    </>
+                )}
+            </Button>
+            <Link className="ml-auto" to="/create">
+                <PlusIcon />
+            </Link>
+        </div>
+    );
 };
